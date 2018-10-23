@@ -16,9 +16,10 @@ git clone https://github.com/sixpaq/meteor-boilerplate.git
 npm install
 
 npm start
+```
 
 ## Links
-https://www.meteor.com
-https://material-ui.com
-https://reactjs.org/
-https://redux.js.org
+- https://www.meteor.com
+- https://material-ui.com
+- https://reactjs.org/
+- https://redux.js.org
