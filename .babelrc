@@ -1,0 +1,7 @@
+{
+  "plugins": [
+    ["babel-root-slash-import", {
+      "rootPathSuffix": "imports"
+    }]
+  ]
+}
