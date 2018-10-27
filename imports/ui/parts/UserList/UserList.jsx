@@ -63,7 +63,7 @@ class UserList extends React.Component {
           handleDisagree={() => this.setState({ confirmDelete: false })}
         >
           <div>
-            User {deleteCandidate.email || deleteCandidate.username} is about to be
+            User <b>{get(deleteCandidate, 'name')}</b> is about to be
             deleted. Are you sure you want to continue?
           </div>
         </AlertDialog>
@@ -73,7 +73,7 @@ class UserList extends React.Component {
               <Avatar>
                 <ImageIcon />
               </Avatar>
-              <ListItemText primary={user.fullname || ([user.fistname, user.prefix, user.lastname].join(' '))} secondary={user.email || user.username} />
+              <ListItemText primary={user.name} secondary={user.email} />
               <IconButton onClick={() => this.handleEdit(user)}>
                 <EditIcon className={classes.icon} />
               </IconButton>
@@ -95,6 +95,6 @@ export default connect(
     deleteUser: () => dispatch({ type: USERS_DELETE }),
   }),
 )(withRouter(withSubscription({
-  key: 'users',
+  key: 'userData',
   get: () => UsersCollection.find().fetch(),
 })(withStyles(styles)(UserList))));

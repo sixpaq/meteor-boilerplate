@@ -50,10 +50,7 @@ const withSubscription = ({
   const subscribe = filter => startSubscription({
     key,
     get,
-    subscribe: () => {
-      console.log('subscribe-filter', filter);
-      return Meteor.subscribe(key, filter);
-    },
+    subscribe: () => Meteor.subscribe(key, filter),
     onReadyData: () => ({
       receivedAt: new Date(),
     }),
