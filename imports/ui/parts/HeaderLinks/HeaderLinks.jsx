@@ -24,6 +24,7 @@ import headerLinksStyle from '/assets/jss/material-dashboard-react/components/he
 
 import withSubscription from '/imports/core/subscription';
 import NotificationsCollection from '/imports/api/notifications';
+import { Meteor } from 'meteor/meteor';
 
 class HeaderLinks extends React.Component {
   state = {
@@ -37,6 +38,17 @@ class HeaderLinks extends React.Component {
 
   handleToggleUser = () => {
     this.setState(state => ({ openUser: !state.openUser }));
+  };
+
+  handleLogoff = () => {
+    Meteor.logout((err) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      this.props.history.push('/auth/login');
+    });
+    this.setState({ openNotifications: false, openUser: false });
   };
 
   handleClose = (event) => {
@@ -159,21 +171,32 @@ class HeaderLinks extends React.Component {
             >
               <Paper>
                 <ClickAwayListener onClickAway={this.handleClose}>
-                  <MenuList role="menu">
-                    <MenuItem
-                      onClick={() => { this.props.history.push('/users/edit/1'); }}
-                      className={classes.dropdownItem}
-                    >
-                      Edit profile
-                    </MenuItem>))
-                    <MenuItem
-                      href="/logoff"
-                      onClick={this.handleClose}
-                      className={classes.dropdownItem}
-                    >
-                      Logoff
-                    </MenuItem>))
-                  </MenuList>
+                  { !Meteor.user() ? (
+                    <MenuList role="menu">
+                      <MenuItem
+                        onClick={() => { this.props.history.push('/auth/login'); }}
+                        className={classes.dropdownItem}
+                      >
+                        Login
+                      </MenuItem>
+                    </MenuList>
+                  ) : (
+                    <MenuList role="menu">
+                      <MenuItem
+                        onClick={() => { this.props.history.push(`/users/edit/${Meteor.userId()}`); }}
+                        className={classes.dropdownItem}
+                      >
+                        Edit profile
+                      </MenuItem>
+                      <MenuItem
+                        href="/logoff"
+                        onClick={this.handleLogoff}
+                        className={classes.dropdownItem}
+                      >
+                        Logoff
+                      </MenuItem>
+                    </MenuList>
+                  )}
                 </ClickAwayListener>
               </Paper>
             </Grow>

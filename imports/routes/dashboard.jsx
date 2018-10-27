@@ -45,7 +45,11 @@ const dashboardRoutes = [
     menu: true,
   },
   {
-    redirect: true, path: '/', to: '/dashboard', navbarName: 'Redirect',
+    redirect: true,
+    path: '/',
+    to: '/dashboard',
+    navbarName: 'Redirect',
+    key: 'redirect',
   },
 ];
 

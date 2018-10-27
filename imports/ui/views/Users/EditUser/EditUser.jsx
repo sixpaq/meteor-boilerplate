@@ -34,7 +34,7 @@ class EditUser extends React.Component {
         console.error(err);
         return;
       }
-      this.setState({ user: result.user });
+      this.setState({ user: result });
     });
   }
 

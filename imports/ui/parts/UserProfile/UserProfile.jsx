@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
 
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -42,7 +41,6 @@ class UserProfile extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('handleSubmit', this.state.user);
     this.props.onSave(this.state.user);
   }
 
@@ -53,7 +51,6 @@ class UserProfile extends React.Component {
       mode,
       user = {},
     } = this.props;
-    console.log('EditUser', user);
 
     return (
       <MediaCard
