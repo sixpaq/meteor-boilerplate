@@ -1,8 +1,14 @@
 {
-  "name": "demomet",
-  "private": true,
-  "scripts": {
-    "start": "meteor run --port $PORT --settings settings.json",
+  "name": "meteor-boilerplate",
+  "description": "Boilerplate for MeteorJS applications with material-ui design",
+  "author": {
+    "name": "Mike Wijnen",
+    "email": "sixpaq@gmail.com",
+    "url": "http://www.wijnen.in"
+  },
+  "version": "1.1.0",
+  "private": false,  "scripts": {
+    "start": "meteor run --port 5000 --settings settings.json",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
     "visualize": "meteor --production --extra-packages bundle-visualizer"
