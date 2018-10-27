@@ -15,6 +15,8 @@ import HeaderLinks from '/imports/ui/components/Header/HeaderLinks.jsx';
 
 import sidebarStyle from '/assets/jss/material-dashboard-react/components/sidebarStyle.jsx';
 
+import CurrentUser from './CurrentUser.jsx';
+
 const Sidebar = ({ ...props }) => {
   // verifies if routeName is the one active (in browser input)
   function activeRoute(routeName) {
@@ -25,27 +27,19 @@ const Sidebar = ({ ...props }) => {
   } = props;
   const links = (
     <List className={classes.list}>
+      <CurrentUser color={color} />
       {routes.filter(r => r.menu).map((prop) => {
         if (prop.redirect) return null;
-        let activePro = ' ';
-        let listItemClasses;
-        if (prop.path === '/upgrade-to-pro') {
-          activePro = `${classes.activePro} `;
-          listItemClasses = classNames({
-            [` ${classes[color]}`]: true,
-          });
-        } else {
-          listItemClasses = classNames({
-            [` ${classes[color]}`]: activeRoute(prop.path),
-          });
-        }
+        const listItemClasses = classNames({
+          [` ${classes[color]}`]: activeRoute(prop.path),
+        });
         const whiteFontClasses = classNames({
           [` ${classes.whiteFont}`]: activeRoute(prop.path),
         });
         return (
           <NavLink
             to={prop.path}
-            className={activePro + classes.item}
+            className={classes.item}
             activeClassName="active"
             key={prop.key}
           >

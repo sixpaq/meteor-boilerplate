@@ -17,13 +17,12 @@ class ItemList extends React.Component {
   }
 
   render() {
-    const { loaded, rows, receivedAt } = this.props || {};
+    const { /* loaded, */ rows /* , receivedAt */ } = this.props || {};
 
     // if (!loaded) {
     //   return (<div className="loading"><h5>Loading ...</h5></div>);
     // }
 
-    console.log('rows', receivedAt, rows);
     return (
       <div>
         <List>

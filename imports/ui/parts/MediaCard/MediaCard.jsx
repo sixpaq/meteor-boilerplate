@@ -6,6 +6,7 @@ import Icon from '@material-ui/core/Icon';
 import Card from '/imports/ui/components/Card/Card.jsx';
 import CardBody from '/imports/ui/components/Card/CardBody.jsx';
 import CardHeader from '/imports/ui/components/Card/CardHeader.jsx';
+import CardFooter from '/imports/ui/components/Card/CardFooter.jsx';
 import CardIcon from '/imports/ui/components/Card/CardIcon.jsx';
 
 const styles = {
@@ -18,7 +19,7 @@ const styles = {
 };
 
 const MediaCard = ({
-  children, classes, color, title, description, buttons, icon, iconcolor,
+  children, classes, color, title, description, buttons, icon, iconcolor, footer,
 }) => (
   <Card>
     <CardHeader color={color}>
@@ -37,6 +38,11 @@ const MediaCard = ({
     <CardBody>
       {children}
     </CardBody>
+    { footer ? (
+      <CardFooter color={color}>
+        {footer}
+      </CardFooter>
+    ) : null }
   </Card>
 );
 
@@ -44,6 +50,7 @@ MediaCard.defaultProps = {
   color: 'primary',
   iconcolor: 'primary',
   buttons: null,
+  footer: null,
   icon: null,
 };
 
@@ -54,9 +61,13 @@ MediaCard.propTypes = {
   color: PropTypes.oneOf([
     'primary',
     'secondary',
+    'success',
     'warning',
+    'info',
+    'rose',
   ]),
   buttons: PropTypes.node,
+  footer: PropTypes.node,
   icon: PropTypes.node,
   iconcolor: PropTypes.oneOf([
     'primary',
