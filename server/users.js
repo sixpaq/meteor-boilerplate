@@ -31,10 +31,11 @@ Meteor.methods({
 });
 
 const transformUser = (userId, user) => {
+  const { profile = {} } = user;
   const transformed = {
     _id: userId,
-    name: user.profile.name,
-    email: user.profile.email,
+    name: profile.name,
+    email: profile.email,
     services: {},
   };
 

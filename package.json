@@ -7,7 +7,8 @@
     "url": "http://www.wijnen.in"
   },
   "version": "1.1.0",
-  "private": false,  "scripts": {
+  "private": false,
+  "scripts": {
     "start": "meteor run --port 5000 --settings settings.json",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",

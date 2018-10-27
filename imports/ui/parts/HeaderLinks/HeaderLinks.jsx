@@ -44,9 +44,7 @@ class HeaderLinks extends React.Component {
     Meteor.logout((err) => {
       if (err) {
         console.error(err);
-        return;
       }
-      this.props.history.push('/auth/login');
     });
     this.setState({ openNotifications: false, openUser: false });
   };
