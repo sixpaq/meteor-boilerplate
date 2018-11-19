@@ -10,6 +10,8 @@ import {
   USERS_EDIT,
   USERS_DELETE,
   USERS_SUBSCRIPTION,
+  USER_LOGGED_IN,
+  USER_LOGGED_OUT,
 } from './actions.js';
 
 export const initialState = {
@@ -65,6 +67,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
         user: payload,
+      };
+
+    case USER_LOGGED_IN:
+      NotificationManager.info('User logged in');
+      return {
+        ...state,
+      };
+
+    case USER_LOGGED_OUT:
+      NotificationManager.info('User logged out');
+      return {
+        ...state,
       };
 
     case START_SUBSCRIPTION:

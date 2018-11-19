@@ -23,6 +23,7 @@ const styles = {
   },
 
   socialButton: {
+    cursor: 'pointer',
     margin: '0 .5rem',
     fontSize: '18pt',
     color: '#fff',
